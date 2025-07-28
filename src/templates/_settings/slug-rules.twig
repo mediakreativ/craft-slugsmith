@@ -1,0 +1,90 @@
+{# src/templates/_settings/slug-rules.twig #}
+
+{% extends '_layouts/cp' %}
+
+{% set readOnly = not craft.app.config.general.allowAdminChanges %}
+
+{% if readOnly %}
+	{% set contentNotice = readOnlyNotice() %}
+{% endif %}
+
+{% set title = "Slugsmith" %}
+
+{% block sidebar %}
+	{% include 'slugsmith/_settings/sidebar.twig' %}
+{% endblock %}
+
+{% do view.registerTranslations('slugsmith', [
+  "Slug Rules",
+  "New Rule",
+  "Create new Rule",
+  "No rules exist yet.",
+  "Delete",
+]) %}
+
+{% set crumbs = [
+  {
+    label: "Slugsmith",
+    url: url('slugsmith/settings/general')
+  }
+] %}
+
+{% block content %}
+	<div class="slugsmith-settings-wrapper slugsmith-rules">
+		<div class="slugsmith-settings-content">
+			<h1>{{ "Configure Custom Slug Rules"|t('slugsmith') }}</h1>
+			<p class="notice" style="margin-top: -0.5em;">
+				{{ "These rules are applied before Craft’s default transliteration and slug generation. Useful for brand names, abbreviations, or custom character replacements."|t('slugsmith') }}
+			</p>
+			{% set allSites = craft.app.sites.allSites %}
+			{% set showAll = allSites|length <= 5 %}
+			{% set currentSiteHandle = craft.app.sites.currentSite.handle %}
+
+			{% for site in allSites %}
+				{% if showAll or site.handle == currentSiteHandle %}
+					<div class="slugsmith-site-header">
+						<h2>{{ site.name }}</h2>
+						{% if not readOnly %}
+							<button type="button" class="btn small add icon slugsmith-new-rule-btn" data-site-uid="{{ site.uid }}">
+								{{ "New Rule"|t('slugsmith') }}
+							</button>
+						{% endif %}
+					</div>
+					<div class="pane">
+						<table class="data fullwidth">
+							<tbody class="slugsmith-rules-sortable" data-site-uid="{{ site.uid }}">
+								{% set siteRules = rulesBySite[site.handle] ?? [] %}
+								{% for rule in siteRules %}
+									<tr data-id="{{ rule.uid }}">
+										<td>
+											<button type="button" class="btn-as-link slugsmith-edit-rule" data-id="{{ rule.uid }}" data-search="{{ rule.search }}" data-replace="{{ rule.replace }}" data-site="{{ site.uid }}">
+												<span class="slugsmith-search slugsmith-badge">
+													<code>{{ rule.search }}</code>
+												</span>
+												<span class="arrow">→</span>
+												<span class="slugsmith-replace slugsmith-badge">
+													<code>{{ rule.replace }}</code>
+												</span>
+											</button>
+										</td>
+										<td class="thin slugsmith-rule-actions">
+											<span class="drag-handle move icon" title="{{ 'Reorder'|t('slugsmith') }}"></span>
+											<a href="#" class="delete icon" title="{{ 'Delete'|t('slugsmith') }}" data-id="{{ rule.uid }}"></a>
+										</td>
+									</tr>
+								{% else %}
+									<tr>
+										<td colspan="2" class="slugsmith-zilch-text-small" style="padding: 1rem;">
+											{{ "No rules exist yet."|t('slugsmith') }}
+										</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				{% endif %}
+			{% endfor %}
+
+		</div>
+	</div>
+{% endblock %}

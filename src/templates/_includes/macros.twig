@@ -1,0 +1,18 @@
+{# src/templates/_includes/macros.twig #}
+
+{% macro instructions(instructionText, infoHtml) -%}
+    <div>
+        {{ instructionText|t('slugsmith') }}
+        <div class="info">
+            {{ infoHtml|raw }}
+        </div>
+    </div>
+{%- endmacro %}
+
+{% macro configWarning(setting) %}
+    {% set setting = '<code>'~setting~'</code>' %}
+    {{ "This setting is being overridden by {setting} in the {file} config file."|bt({
+        setting: setting,
+        file: '<code>slugsmith.php</code>'
+    })|raw }}
+{% endmacro %}

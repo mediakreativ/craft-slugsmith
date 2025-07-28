@@ -1,0 +1,22 @@
+{# src/templates/_settings/sidebar.twig #}
+
+{% set currentItem = craft.app.request.getSegment(3)|default("general") %}
+{% set currentPath = craft.app.request.pathInfo %}
+{% block sidebar %}
+	<nav>
+		<ul>
+			<li>
+				<a href="{{ url('slugsmith/settings/general') }}" 
+				   {% if currentPath == "slugsmith/settings/general" %} class="sel"{% endif %}>
+					{{ "General Settings"|t("slugsmith") }}
+				</a>
+			</li>
+			<li>
+				<a href="{{ url('slugsmith/settings/slug-rules') }}" 
+				   {% if currentItem == "slug-rules" %} class="sel"{% endif %}>
+					{{ "Custom Slug Rules"|t("slugsmith") }}
+				</a>
+			</li>
+		</ul>
+	</nav>
+{% endblock %}

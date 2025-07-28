@@ -1,0 +1,232 @@
+/* src/assets/css/slugsmith.css */
+
+.slugsmith-menu-item.menu-item::before {
+  margin-bottom: 2px;
+}
+.slugsmith-add-btn.btn.icon.add::before {
+  margin-bottom: -1px;
+}
+
+/* ### Plugin Settings ### */
+
+.slugsmith-zilch {
+  color: var(--light-text-color);
+  padding-block: 100px;
+  padding-inline: 0;
+  text-align: center;
+}
+
+.slugsmith-zilch-text {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.slugsmith-zilch-text-small {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.slugsmith-zilch .btn {
+  margin-top: 1rem;
+}
+
+.slugsmith-hint {
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  border: 1px solid #f7e6bc;
+  border-radius: 5px;
+  background-color: #fefce8;
+  color: #8d5104;
+  font-size: 13px;
+}
+
+/* Settings Wrapper Layout */
+.slugsmith-settings-wrapper {
+  display: flex;
+  gap: 20px;
+  overflow: scroll;
+}
+
+/* Content Styling */
+.slugsmith-settings-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.slugsmith-hint {
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  border: 1px solid #f7e6bc;
+  border-radius: 5px;
+  background-color: #fefce8;
+  color: #8d5104;
+  font-size: 13px;
+}
+
+/* ### Slug Refresh ### */
+
+@media screen and (min-width: 400px) {
+  .meta > .field.slugsmith-slug > .heading {
+    flex: 0 0 auto;
+    line-height: 18px;
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .meta > .field.slugsmith-slug > .input {
+    padding-inline-start: var(--s);
+    padding-inline-end: 0;
+    flex: 1;
+    width: auto;
+  }
+}
+
+.slugsmith-slug .icon::before {
+  line-height: 1.2;
+}
+
+.slugsmith-slug-refresh {
+  width: 20px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slugsmith-slug-refresh:not(.is-current):hover .icon::before {
+  color: var(--link-color);
+}
+
+.slugsmith-slug-refresh.is-current {
+  opacity: 0;
+  cursor: default;
+  pointer-events: none;
+}
+
+@keyframes slugsmith-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.slugsmith-slug-refresh.spin .icon::before {
+  animation: slugsmith-spin 0.5s linear;
+}
+
+.slugsmith-slug-refresh .icon::before {
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+.slugsmith-slug-refresh .icon[data-icon="check"]::before {
+  color: var(--success-color);
+}
+
+.slugsmith-slug-url-preview {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--light-text-color);
+  font-family: monospace;
+  word-break: break-word;
+}
+
+/* ### Rules ### */
+
+.slugsmith-rules table.data tbody tr:not(.disabled):hover td {
+  background-color: var(--gray-100);
+}
+
+.slugsmith-rules .drag-handle {
+  margin-right: 2rem;
+}
+
+.slugsmith-rules td button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  font-size: 14px;
+}
+
+.slugsmith-rules td code {
+  padding: 1px 2px;
+  font-family: monospace;
+}
+
+.slugsmith-rules td .arrow {
+  opacity: 0.6;
+}
+
+.slugsmith-badge {
+  align-items: center;
+  border: 1px solid var(--hairline-color);
+  border-radius: var(--small-border-radius);
+  color: var(--medium-text-color);
+  cursor: pointer;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  gap: var(--xs);
+  line-height: 1;
+  padding-block: var(--xs);
+  padding-inline: calc(var(--xs) + 1px);
+}
+
+.slugsmith-search.slugsmith-badge {
+  background-color: var(--gray-100);
+  color: var(--gray-700);
+}
+
+.slugsmith-replace.slugsmith-badge {
+  background-color: var(--gray-100);
+}
+
+/* ### Modal ### */
+
+.slugsmith-modal input[type="text"] {
+  width: 100%;
+  min-width: 300px;
+  padding: 7px 10px;
+  border: var(--input-border);
+  border-radius: var(--input-border-radius);
+  background: var(--input-bg);
+}
+.slugsmith-modal .header {
+  padding: 18px;
+}
+
+@media screen and (max-width: 1023px) {
+  .slugsmith-modal .footer {
+    min-height: 50px;
+  }
+}
+.slugsmith-rule-actions {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.slugsmith-is-dragging tbody tr:hover td {
+  background-color: transparent !important;
+}
+
+.slugsmith-site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.slugsmith-site-header h2 {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+}
+
+.slugsmith-rules .pane {
+  margin-top: 0;
+}

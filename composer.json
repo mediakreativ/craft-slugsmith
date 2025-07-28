@@ -1,0 +1,54 @@
+{
+  "name": "mediakreativ/craft-slugsmith",
+  "description": "Advanced Slug Control for Craft CMS. Refresh & Customize Your Slugs.",
+  "type": "craft-plugin",
+  "keywords": [
+    "craftcms",
+    "craft",
+    "plugin",
+    "UX",
+    "UI",
+    "slug",
+    "slugs"
+  ],
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Christian Schindler",
+      "role": "Developer",
+      "homepage": "https://mediakreativ.de"
+    }
+  ],
+  "support": {
+    "email": "plugins@mediakreativ.de",
+    "docs": "https://github.com/mediakreativ/craft-slugsmith",
+    "issues": "https://github.com/mediakreativ/craft-slugsmith/issues?state=open",
+    "source": "https://github.com/mediakreativ/craft-slugsmith",
+    "rss": "https://github.com/mediakreativ/craft-slugsmith/releases.atom"
+  },
+  "require": {
+    "craftcms/cms": "^5.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "mediakreativ\\slugsmith\\": "src/"
+    }
+  },
+  "extra": {
+    "handle": "slugsmith",
+    "name": "Slugsmith",
+    "documentationUrl": "https://github.com/mediakreativ/craft-slugsmith",
+    "changelogUrl": "https://raw.githubusercontent.com/mediakreativ/craft-slugsmith/master/CHANGELOG.md",
+    "class": "mediakreativ\\slugsmith\\Slugsmith"
+  },
+  "config": {
+    "sort-packages": true,
+    "platform": {
+      "php": "8.2"
+    },
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true,
+      "craftcms/plugin-installer": true
+    }
+  }
+}

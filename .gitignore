@@ -1,0 +1,28 @@
+# Node modules
+node_modules/
+
+# Composer vendor folder
+vendor/
+
+# macOS system files
+.DS_Store
+
+# Log and debug files
+*.log
+*.log.*
+
+# Build artefacts (falls später ein Build-Prozess verwendet wird)
+dist/
+build/
+
+# Craft runtime/temp files
+storage/
+.env
+.env.*
+web/cpresources/
+
+# Ignoriere Translations Cache, falls es existiert
+translations/cache/
+
+# VSCode-specific files
+.vscode/

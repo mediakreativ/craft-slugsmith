@@ -1,0 +1,41 @@
+{
+  "devDependencies": {
+    "@prettier/plugin-php": "^0.22.2",
+    "prettier": "^3.3.3"
+  },
+  "name": "craft-slugsmith",
+  "version": "1.0.0",
+  "description": "Advanced Slug Control for Craft CMS. Refresh & Customize Your Slugs.",
+  "author": {
+    "name": "Christian Schindler",
+    "email": "plugins@mediakreativ.de",
+    "url": "https://mediakreativ.de"
+  },
+  "keywords": [
+    "craftcms",
+    "craft",
+    "plugin",
+    "UX",
+    "UI",
+    "slug",
+    "slugs"
+  ],
+  "license": "proprietary",
+  "scripts": {
+    "format": "prettier --write .",
+    "check-format": "prettier --check .",
+    "fix-format": "prettier --write . --loglevel warn"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mediakreativ/craft-slugsmith.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mediakreativ/craft-slugsmith/issues"
+  },
+  "homepage": "https://github.com/mediakreativ/craft-slugsmith",
+  "changelog": "https://raw.githubusercontent.com/mediakreativ/craft-slugsmith/master/CHANGELOG.md"
+}

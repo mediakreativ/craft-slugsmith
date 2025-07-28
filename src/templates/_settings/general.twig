@@ -1,0 +1,90 @@
+{# src/templates/_settings/general.twig #}
+
+{% extends '_layouts/cp' %}
+{% import '_includes/forms' as forms %}
+{% import 'slugsmith/_includes/macros.twig' as macros %}
+
+{% set readOnly = not craft.app.config.general.allowAdminChanges %}
+{% set fullPageForm = not readOnly %}
+
+{% if readOnly %}
+	{% set contentNotice = readOnlyNotice() %}
+{% endif %}
+
+{% set crumbs = [
+    {
+        label: "Slugsmith",
+        url: url('slugsmith/settings/general')
+    }
+] %}
+
+{% block sidebar %}
+	{% include 'slugsmith/_settings/sidebar.twig' %}
+{% endblock %}
+
+{% block content %}
+	<input type="hidden" name="pluginHandle" value="slugsmith">
+	{{ actionInput('slugsmith/slugsmith/save-settings') }}
+
+	<div class="slugsmith-settings-wrapper">
+		<div class="slugsmith-settings-content">
+
+			<h1>{{ "General Settings"|t('slugsmith') }}</h1>
+
+			{{ forms.lightswitchField({
+                label: 'Enable Slug Refresh Button'|t('slugsmith'),
+                name: 'enableSlugRefresh',
+                id: 'enableSlugRefresh',
+                instructions: 'If the slug differs from the current title, a button is added to the slug field to regenerate the slug based on the current title.'|t('slugsmith')|raw,
+                on: settings.enableSlugRefresh,
+                disabled: readOnly or ('enableSlugRefresh' in overrides),
+                warning: 'enableSlugRefresh' in overrides ? macros.configWarning('enableSlugRefresh'),
+            }) }}
+
+			{% set allSites = craft.app.sites.allSites %}
+			{% if allSites|length == 1 %}
+				{% set siteHandle = allSites[0].handle %}
+				{{ forms.lightswitchField({
+                    label: 'Limit slugs to ASCII'|t('slugsmith'),
+                    name: 'limitAutoSlugToAscii',
+                    id: 'limitAutoSlugToAscii',
+                    instructions: 'Transliterate non-ASCII characters into Latin/ASCII.'|t('slugsmith'),
+                    on: settings.asciiPerSite[siteHandle] ?? settings.limitAutoSlugToAscii,
+                    disabled: readOnly,
+                }) }}
+				<p class="notice" style="margin-top: -0.5em;">
+					{{ "This setting overrides Craft’s global <code>limitAutoSlugToAscii</code> config value."|t('slugsmith')|raw }}
+				</p>
+			{% else %}
+				<hr>
+				<h2 class="heading">{{ "Limit slugs to ASCII"|t('slugsmith') }}</h2>
+				<p class="notice" style="margin-top: -0.5em;">
+					{{ "Transliterate non-ASCII characters into Latin/ASCII. This setting overrides Craft’s global <code>limitAutoSlugToAscii</code> config value. Please select your preferred setting for each site."|t('slugsmith')|raw }}
+				</p>
+				{% for site in allSites %}
+					{{ forms.lightswitchField({
+                        label: site.name,
+                        name: "asciiPerSite["~site.handle~"]",
+                        id: "asciiPerSite-"~site.handle,
+                        on: settings.asciiPerSite[site.handle] ?? false,
+                        instructions: "Transliterate slugs to ASCII on site “{site}”."
+                        |t('slugsmith') 
+                        |replace({ '{site}': site.name }),
+                        disabled: readOnly,
+                    }) }}
+				{% endfor %}
+				<hr>
+			{% endif %}
+
+			{{ forms.lightswitchField({
+                label: 'Convert hashtags to slugs'|t('slugsmith'),
+                name: 'autoFormatHashtags',
+                id: 'autoFormatHashtags',
+                instructions: 'Automatically turns hashtags like #WeLoveCraft into readable slugs like <code>hashtag-we-love-craft</code>.'|t('slugsmith'),
+                on: settings.autoFormatHashtags,
+                disabled: readOnly or ('autoFormatHashtags' in overrides),
+                 warning: 'autoFormatHashtags' in overrides ? macros.configWarning('autoFormatHashtags'),
+            }) }}
+		</div>
+	</div>
+{% endblock %}
