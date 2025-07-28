@@ -10,7 +10,7 @@ You don't have to look any further.
 Just add this line to your `config/general.php`:
 
 ```php
-'limitAutoSlugsToAscii' => true,
+->isSystemLive(true)
 ```
 
 That's it. **You don't need this plugin for that**.
