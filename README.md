@@ -1,7 +1,6 @@
 # Slugsmith Plugin for Craft CMS
 
-**Slugsmith brings advanced slug control to Craft CMS.**  
-Take full control of your slugs with powerful customization, intuitive tools, and site-specific settings.
+**Slugsmith brings advanced slug control to Craft CMS.** Take full control of your slugs with powerful customization, intuitive tools, and site-specific settings.
 
 Looking for a way to transliterate your titles into clean, URL-friendly slugs - like turning `¿Cómo estás?` into `como-estas`?  
 
