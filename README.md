@@ -4,7 +4,7 @@
 
 Looking for a way to transliterate your titles into clean, URL-friendly slugs - like turning ` ¡Fútbol, cañas y tapas!` into `futbol-canas-y-tapas` - or `Rødgrød med fløde` into `rodgrod-med-flode`?
 
-You don't have to look any further.
+No need to look any further. Craft already does that natively.
 
 Just add this line to your `config/general.php`:
 
