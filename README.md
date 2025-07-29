@@ -2,7 +2,7 @@
 
 **Slugsmith brings advanced slug control to Craft CMS.** Take full control of your slugs with powerful customization, intuitive tools, and site-specific settings.
 
-Looking for a way to transliterate your titles into clean, URL-friendly slugs - like turning `¿Cómo estás?` into `como-estas` - or `Rødgrød med fløde` into `rodgrod-med-flode`?
+Looking for a way to transliterate your titles into clean, URL-friendly slugs - like turning ` ¡Fútbol, cañas y tapas!` into `futbol-canas-y-tapas` - or `Rødgrød med fløde` into `rodgrod-med-flode`?
 
 You don't have to look any further.
 
