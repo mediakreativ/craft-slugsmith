@@ -22,11 +22,11 @@ That's it. **You don't need this plugin for that**.
 - **Slug Refresh Button**  
   Regenerate slugs based on the current title with a single click - directly in the entry editor.
 
-- **Custom Slug Rules**  
-  Define your own replacement rules (per site) to handle special characters, brand names, abbreviations, and more - all applied before Craft's default slugification.
+- **Per-Site Custom Slug Rules**  
+  Define your own replacement rules to handle special characters, brand names, abbreviations, and more - all applied before Craft's default slugification.
 
 - **Per-Site ASCII Transliteration Control**  
-  Override Craft's global `limitAutoSlugsToAscii` setting with fine-grained toggles per site.
+  Override Craft's global `limitAutoSlugsToAscii` setting and choose which sites should transliterate slugs.
 
 - **Hashtag Conversion**  
   Automatically convert hashtags like `#WeLoveCraft` into readable slugs like `hashtag-we-love-craft`.
