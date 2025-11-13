@@ -79,6 +79,10 @@ class SlugsmithController extends \craft\web\Controller
             "enableSlugRefresh"
         );
 
+        $settings->autoFormatHashtags = (bool) $request->getBodyParam(
+            "autoFormatHashtags"
+        );
+
         $allSites = Craft::$app->getSites()->getAllSites();
 
         if (count($allSites) === 1) {
