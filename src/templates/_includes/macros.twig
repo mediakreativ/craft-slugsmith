@@ -11,7 +11,7 @@
 
 {% macro configWarning(setting) %}
     {% set setting = '<code>'~setting~'</code>' %}
-    {{ "This setting is being overridden by {setting} in the {file} config file."|bt({
+    {{ "This setting is being overridden by {setting} in the {file} config file."|t('slugsmith', {
         setting: setting,
         file: '<code>slugsmith.php</code>'
     })|raw }}
