@@ -4,7 +4,7 @@
     "prettier": "^3.3.3"
   },
   "name": "craft-slugsmith",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Advanced Slug Control for Craft CMS. Refresh & Customize Your Slugs.",
   "author": {
     "name": "Christian Schindler",
